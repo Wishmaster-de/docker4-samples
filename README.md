@@ -22,3 +22,19 @@ git clone https://github.com/docker-compendium/docker4-samples.git
 cd docker4-samples
 ```
 
+## Kapitel
+
+Die Beispieldateien sind kapitelweise organisiert:
+
+* Kapitel 1: `hello-world-xxx`
+* Kapitel 2: --
+* Kapitel 3: `dockerfile/`
+* Kapitel 4: `compose/`
+* Kapitel 5: ...
+* Kapitel 6:
+* Kapitel 7:
+* Kapitel 8:
+* Kapitel 9:
+* Kapitel 10:
+* Kapitel 11:
+* Kapitel 12:
