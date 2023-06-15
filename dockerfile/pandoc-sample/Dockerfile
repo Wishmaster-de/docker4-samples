@@ -1,5 +1,5 @@
 # Dockerfile
-FROM ubuntu:20.04
+FROM ubuntu:22.04
 ENV TZ="Europe/Berlin" 
 RUN ln -snf /usr/share/zoneinfo/$TZ /etc/localtime && \
     echo $TZ > /etc/timezone && \
@@ -26,18 +26,22 @@ RUN ln -snf /usr/share/zoneinfo/$TZ /etc/localtime && \
     apt-get clean && \
     rm -rf /var/lib/apt/lists/*
 
-# install a specific Pandoc version
-RUN curl -L https://github.com/jgm/pandoc/releases/download/2.14/pandoc-2.14-1-amd64.deb \
-   -o /tmp/pandoc.deb && \
-   dpkg -i /tmp/pandoc.deb && \
-   rm /tmp/pandoc.deb
 
-# alternative: install specific Pandoc version for 1/ARM architektur
-#RUN curl -L https://github.com/jgm/pandoc/releases/download/2.17.0.1/pandoc-2.17.0.1-1-arm64.deb \
-#   -o /tmp/pandoc.deb && \
-#   dpkg -i /tmp/pandoc.deb && \
-#   rm /tmp/pandoc.deb
+# install a specific Pandoc version for amd64 or arm64 platform
+ARG TARGETARCH
+RUN if [ "$TARGETARCH" = "amd64" ]; then \
+      curl -L https://github.com/jgm/pandoc/releases/download/3.1.3/pandoc-3.1.3-1-amd64.deb \
+        -o /tmp/pandoc.deb && \
+      dpkg -i /tmp/pandoc.deb && \
+      rm /tmp/pandoc.deb; \
+    elif [ "$TARGETARCH" = "arm64" ]; then \
+      curl -L https://github.com/jgm/pandoc/releases/download/3.1.3/pandoc-3.1.3-1-arm64.deb \
+        -o /tmp/pandoc.deb && \
+      dpkg -i /tmp/pandoc.deb && \
+      rm /tmp/pandoc.deb; \
+    fi
    
+
 # install fonts
 # (unfortunately, we cannot provide the fonts file)
 # ADD myfonts.tgz /usr/local/share/texmf
