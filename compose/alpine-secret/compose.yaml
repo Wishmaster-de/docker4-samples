@@ -4,9 +4,9 @@ services:
   secrettest:
     image: alpine
     secrets:
-      - password
-    command: ["cat", "/run/secrets/password"]
+      - mypassword
+    command: ["cat", "/run/secrets/mypassword"]
 
 secrets:
-  password:
+  mypassword:
     file: ./top-secret.txt

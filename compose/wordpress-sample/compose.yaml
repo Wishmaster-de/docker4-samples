@@ -1,6 +1,3 @@
-# Datei test/docker-compose.yml
-version: '3'
-
 services:
    db:
      image: mariadb:latest
