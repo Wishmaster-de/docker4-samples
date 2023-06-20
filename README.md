@@ -26,15 +26,15 @@ cd docker4-samples
 
 Die Beispieldateien sind kapitelweise organisiert:
 
-* Kapitel 1: `hello-world-xxx`
-* Kapitel 2: --
-* Kapitel 3: `dockerfile/`
-* Kapitel 4: `compose/`
-* Kapitel 5: ...
-* Kapitel 6:
-* Kapitel 7:
-* Kapitel 8:
-* Kapitel 9:
-* Kapitel 10:
+* Kapitel 1:  `hello-world-xxx/`
+* Kapitel 2:  --
+* Kapitel 3:  `dockerfile/`
+* Kapitel 4:  `compose/`
+* Kapitel 5:  --
+* Kapitel 6:  --
+* Kapitel 7:  --
+* Kapitel 8:  todo
+* Kapitel 9:  todo
+* Kapitel 10: `db/`
 * Kapitel 11:
 * Kapitel 12:
