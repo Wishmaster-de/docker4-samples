@@ -1,10 +1,8 @@
-version: '3'
 services:
   dev:
     build:
       context: .
       dockerfile: Dockerfile-dev
-    image: docbuc/node-express:dev
     volumes:
       - ./src:/src
       - node_exp_modules:/src/node_modules
@@ -12,7 +10,8 @@ services:
       - 8080:3000
     environment:
       DEBUG: "src"
-    command: [ "nodemon", "bin/www" ]
+        # command: [ "nodemon", "-e", "js,hbs", "bin/www" ]
+    command: [ "node", "bin/www" ]
   # prod:
   #   build:
   #     context: .

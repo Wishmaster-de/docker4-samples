@@ -4,7 +4,7 @@ const debug = require('debug')('src');
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
-  debug('Kopfzeilen: ', req.headers);
+  debug('Headers: ', req.headers);
   res.render('index', { title: 'Express' });
 });
 
