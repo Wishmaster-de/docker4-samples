@@ -1,14 +1,14 @@
-FROM debian:buster-slim
+FROM debian:bookworm-slim
 RUN apt-get update && apt-get install -y --no-install-recommends\
   composer \
-  php7.3 \
-  php7.3-dom \
-  php7.3-zip \
+  php8.2 \
+  php8.2-dom \
+  php8.2-zip \
   unzip \
   && rm -rf /var/lib/apt/lists/*
-RUN useradd -ms /bin/bash php7
-WORKDIR /home/php7
-USER php7
+RUN useradd -ms /bin/bash php8
+WORKDIR /home/php8
+USER php8
 RUN composer require zendframework/zend-feed \
   zendframework/zend-http
 COPY printheadlines.php ./
