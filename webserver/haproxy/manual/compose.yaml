@@ -1,6 +1,6 @@
-version: "3"
 services:
   haproxy:
+    build: .
     image: docbuc/haproxy
     ports:
       - 8080:80
