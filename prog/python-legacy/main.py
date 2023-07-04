@@ -13,6 +13,6 @@ map.drawmapboundary(fill_color='aqua')
 map.fillcontinents(color='coral',lake_color='aqua')
 date = datetime.utcnow()
 CS=map.nightshade(date)
-plt.title('Day and night at %s (UTC)' % date.strftime("%Y-%m-%d %H:%M:%S"))
+plt.title('Tag und Nacht am %s (UTC)' % date.strftime("%d %b %Y %H:%M:%S"))
 plt.savefig('/src/out/tag_nacht.png')
 
