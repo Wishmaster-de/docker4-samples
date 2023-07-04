@@ -1,5 +1,5 @@
-FROM openjdk:18
-RUN adduser -r java
+FROM eclipse-temurin:11
+RUN useradd -r java
 WORKDIR /src
 RUN chown java /src
 USER java
