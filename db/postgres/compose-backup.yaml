@@ -2,7 +2,7 @@
 version: '3'
 services:
   backup:
-    image: postgres:13-alpine
+    image: postgres:15-alpine
     depends_on:
       - db
     volumes:
@@ -11,7 +11,7 @@ services:
       pg_dump --host db -F c -f /backup/geonames.dump
       --username=postgres geonames
     environment:
-      PGPASSWORD: secret
+      PGPASSWORD: geheim
 volumes:
   backup_vol:
 
