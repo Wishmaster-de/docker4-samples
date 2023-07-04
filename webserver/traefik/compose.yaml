@@ -1,9 +1,7 @@
-version: '3'
-
 services:
   traefik:
     restart: unless-stopped
-    image: traefik:v2.4
+    image: traefik:v2.10
     networks:
       - web
     ports:
@@ -13,7 +11,7 @@ services:
       - /var/run/docker.sock:/var/run/docker.sock:ro
       - ./traefik.yml:/traefik.yml
       - ./traefik_api.yml:/traefik_api.yml
-      - ./acme.json:/acme.json
+      - ./acme:/acme
 networks:
   web:
     external: true

@@ -14,7 +14,7 @@ certificatesResolvers:
   lets-encrypt:
     acme:
       email: info@dockerbuch.info
-      storage: acme.json
+      storage: /acme/acme.json
       tlsChallenge: {}
 providers:
   docker:
