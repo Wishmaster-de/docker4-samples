@@ -1,12 +1,13 @@
 FROM golang:1.20
 
+ENV TZ=Europe/Vienna
 WORKDIR /app
 
 # cache modules
 COPY go.mod go.sum ./
 RUN go mod download && go mod verify
 
-COPY . .
-RUN go build -v -o /usr/local/bin/app ./printheadlines.go
+COPY printheadlines.go .
+RUN go build -v -o printheadlines ./printheadlines.go
 
-CMD ["app"]
+CMD ["/app/printheadlines"]

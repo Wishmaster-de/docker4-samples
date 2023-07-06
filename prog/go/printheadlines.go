@@ -14,7 +14,7 @@ func main() {
 	}
 	for _, item := range feed.Items {
 		fmt.Printf("* [%s]: %s\n",
-			item.PublishedParsed.Format("2006-01-02 15:04:05"),
+			item.PublishedParsed.Local().Format("2006-01-02 15:04:05"),
 			item.Title)
 	}
 }
