@@ -1,4 +1,3 @@
-version: '3.5'
 services:
   wordpress:
     image: wordpress:apache
@@ -16,7 +15,7 @@ services:
       - mysql_user
 
   mariadb:
-    image: mariadb:10
+    image: mariadb:11
     restart: always
     secrets:
       - mysql_root
