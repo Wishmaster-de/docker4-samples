@@ -1,28 +1,23 @@
-import Vue from 'vue'
-import Router from 'vue-router'
-import Home from '@/components/Home'
-import Blog from '@/components/Blog'
-import Login from '@/components/Login'
+import { createRouter, createWebHistory } from 'vue-router'
+import HomeView from '../views/HomeView.vue'
 
-Vue.use(Router)
-
-export default new Router({
-  mode: 'history',
+const router = createRouter({
+  history: createWebHistory(import.meta.env.BASE_URL),
   routes: [
-    { path: '/', name: 'Home', component: Home },
-    { path: '/login', name: 'Login', component: Login },
-    { path: '/blog', name: 'Blog', component: Blog },
-    { path: '/blog/:user', name: 'UserBlog', component: Blog }
-  ],
-  scrollBehavior (to) {
-    if (to.hash) {
-      console.log('going to return ', { selector: to.hash })
-      if (document.querySelector(to.hash)) {
-        console.log('got your qs: ', document.querySelector(to.hash))
-      }
-      return {
-        selector: to.hash
-      }
+    {
+      path: '/',
+      name: 'home',
+      component: HomeView
+    },
+    {
+      path: '/about',
+      name: 'about',
+      // route level code-splitting
+      // this generates a separate chunk (About.[hash].js) for this route
+      // which is lazy-loaded when the route is visited.
+      component: () => import('../views/AboutView.vue')
     }
-  }
+  ]
 })
+
+export default router
