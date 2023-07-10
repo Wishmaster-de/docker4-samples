@@ -1,4 +1,3 @@
-version: '3.1'
 services:
   joomla:
     image: joomla:apache
@@ -9,14 +8,14 @@ services:
     environment:
       JOOMLA_DB_HOST: mariadb
       JOOMLA_DB_NAME: dockerbuch
-      JOOMLA_DB_USER: root
-      JOOMLA_DB_PASSWORD: eengi7suXeut
+      JOOMLA_DB_USER: dockerbuch
+      JOOMLA_DB_PASSWORD: chohbaeB3ooY9Ooyah4iech
   mariadb:
-    image: mariadb:10
+    image: mariadb:11
     environment:
       MYSQL_ROOT_PASSWORD: eengi7suXeut
       MYSQL_DATABASE: dockerbuch
       MYSQL_USER: dockerbuch
-      MYSQL_PASSWORD: johroo2zaeQu
+      MYSQL_PASSWORD: chohbaeB3ooY9Ooyah4iech
 volumes:
   webdata:
