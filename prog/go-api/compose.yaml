@@ -2,7 +2,7 @@ services:
   api:
     build:
       context: .
-      target: builder
+      target: dev
     ports:
       - "8000:8000"
       - "2345:2345"

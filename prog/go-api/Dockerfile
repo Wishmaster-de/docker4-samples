@@ -1,4 +1,4 @@
-FROM golang:1.20-alpine AS builder
+FROM golang:1.20-alpine AS dev
 RUN apk add --no-cache tzdata
 ENV TZ=Europe/Vienna
 WORKDIR /app
@@ -16,7 +16,7 @@ FROM alpine:latest AS runner
 RUN apk add --no-cache tzdata
 ENV TZ=Europe/Vienna
 WORKDIR /app
-COPY --from=builder /app/api-server .
+COPY --from=dev /app/api-server .
 EXPOSE 8000
 ENTRYPOINT ["./api-server"]
 
