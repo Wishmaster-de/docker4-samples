@@ -1,85 +1,78 @@
-<script setup>
-import { RouterLink, RouterView } from 'vue-router'
-import HelloWorld from './components/HelloWorld.vue'
-</script>
-
 <template>
-  <header>
-    <img alt="Vue logo" class="logo" src="@/assets/logo.svg" width="125" height="125" />
-
-    <div class="wrapper">
-      <HelloWorld msg="You did it!" />
-
-      <nav>
-        <RouterLink to="/">Home</RouterLink>
-        <RouterLink to="/about">About</RouterLink>
-      </nav>
-    </div>
-  </header>
-
-  <RouterView />
+  <!-- Datei: mwa/frontend/vue/src/App.vue -->
+  <div id="app">
+    <header>
+      <span>
+        <router-link to="/">Online Foto-Tagebuch</router-link>
+      </span>
+      <logout v-if="loggedIn"></logout>
+      <span v-else>
+        <router-link to="/login">Login</router-link>
+      </span>
+    </header>
+    <main>
+      <router-view></router-view>
+    </main>
+  </div>
 </template>
 
-<style scoped>
-header {
-  line-height: 1.5;
-  max-height: 100vh;
+<script>
+import Logout from './components/Logout.vue'
+import request from './util/request'
+export default {
+  name: 'app',
+  created() {
+    request.get('/session')
+      .then(resp => {
+        if (resp.user) {
+          this.$store.commit('login', resp.user)
+        }
+      })
+  },
+  computed: {
+    loggedIn() { return this.$store.state.loggedIn },
+    user() { return this.$store.state.user }
+  },
+  components: { Logout }
+}
+</script>
+
+<style>
+body {
+  margin: 0;
 }
 
-.logo {
-  display: block;
-  margin: 0 auto 2rem;
+#app {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  color: #2c3e50;
 }
 
-nav {
-  width: 100%;
-  font-size: 12px;
+main {
   text-align: center;
-  margin-top: 2rem;
+  margin-top: 40px;
 }
 
-nav a.router-link-exact-active {
-  color: var(--color-text);
+header {
+  margin: 0;
+  height: 56px;
+  padding: 0 16px;
+  background-color: #35495E;
+  color: #ffffff;
+  display: flex;
+  justify-content: space-between;
 }
 
-nav a.router-link-exact-active:hover {
-  background-color: transparent;
+header>span {
+  font-size: 20px;
+  font-weight: 400;
+  padding-top: 16px;
 }
-
-nav a {
-  display: inline-block;
-  padding: 0 1rem;
-  border-left: 1px solid var(--color-border);
-}
-
-nav a:first-of-type {
-  border: 0;
-}
-
-@media (min-width: 1024px) {
-  header {
-    display: flex;
-    place-items: center;
-    padding-right: calc(var(--section-gap) / 2);
-  }
-
-  .logo {
-    margin: 0 2rem 0 0;
-  }
-
-  header .wrapper {
-    display: flex;
-    place-items: flex-start;
-    flex-wrap: wrap;
-  }
-
-  nav {
-    text-align: left;
-    margin-left: -1rem;
-    font-size: 1rem;
-
-    padding: 1rem 0;
-    margin-top: 1rem;
-  }
+</style>
+<style scoped>
+a {
+  color: white;
+  text-decoration: none;
 }
 </style>
