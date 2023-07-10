@@ -18,7 +18,7 @@ const redisClient = redis.createClient({
 let mongoConnected = false;
 
 app.use(cors({
-  origin: 'https://diary.dokerbuch.info',
+  origin: 'https://diary.dockerbuch.info',
   credentials: true
 }));
 app.use(express.json());

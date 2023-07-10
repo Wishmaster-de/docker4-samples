@@ -1,6 +1,6 @@
 # Datei: mwa/frontend/Dockerfile (docbuc/mwafe:2)
-FROM node:16 as builder
-RUN npm i -g --save @vue/cli
+FROM node:20 as builder
+# RUN npm i -g --save @vue/cli
 WORKDIR /src/vue
 COPY vue/package* /src/vue/
 RUN chown -R node:node /src
@@ -10,7 +10,7 @@ COPY vue/ /src/vue/
 RUN npm run-script build
 COPY dev-entrypoint.sh /src/
 ENTRYPOINT [ "/src/dev-entrypoint.sh" ]
-CMD [ "npm", "run-script", "serve" ]
+CMD [ "npm", "run", "dev", "--", "--host"]
 
 FROM nginx:alpine
 WORKDIR /usr/share/nginx/html

@@ -1,5 +1,5 @@
 # Datei: mwa/api/Dockerfile (docbuc/mwaapi:2)
-FROM node:16 as dev
+FROM node:20 as dev
 WORKDIR /src
 RUN chown node:node /src
 USER node
@@ -10,7 +10,7 @@ ENV TZ="Europe/Amsterdam"
 ENTRYPOINT [ "/src/dev-entrypoint.sh" ]
 CMD [ "npx", "nodemon", "server.js" ]
 
-FROM node:16-alpine
+FROM node:20-alpine
 WORKDIR /src
 RUN chown node:node /src
 USER node

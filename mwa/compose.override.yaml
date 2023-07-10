@@ -1,4 +1,3 @@
-version: '3.4'
 services:
   api:
     image: docbuc/mwaapi-dev:latest
@@ -20,4 +19,4 @@ services:
     volumes:
       - ./frontend/vue:/src/vue
     ports:
-      - 8080:8080
+      - 8080:5173
