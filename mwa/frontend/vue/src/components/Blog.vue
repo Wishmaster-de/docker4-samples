@@ -3,7 +3,8 @@
     <lightbox v-bind:src="lightboxPic" v-bind:title="lightboxPicTitle" v-on:hide-lightbox="lightboxActive = false"
       v-bind:active="lightboxActive"></lightbox>
     <div class="blogBody">
-      <DropZone id="dzone" url="/api/entry" @uploaded="uploaded" @sending="sending" />
+      <DropZone id="dzone" url="http://localhost:8080/api/entry" 
+        @sending="sending" :maxFileSize="600000000" />
       <calendar v-bind:entries="entries"></calendar>
       <div v-if="entries.length > 0">
         <blog-entry v-for="entry in entries" v-bind:key="entry._id" v-bind="entry" v-on:pic-clicked="picClicked"
@@ -20,11 +21,12 @@ import DropZone from 'dropzone-vue';
 import BlogEntry from '@/components/BlogEntry.vue'
 import Lightbox from '@/components/Lightbox.vue'
 import Calendar from '@/components/Calendar.vue'
+import ConfirmDialog from '@/components/ConfirmDialog.vue'
 import request from '../util/request'
-// import Vue from 'vue'
-import VuejsDialog from 'vuejs-dialog'
 import 'dropzone-vue/dist/dropzone-vue.common.css';
 import config from '../../config'
+import { openDialog } from 'vue3-promise-dialog';
+
 
 export default {
   name: 'blog',
@@ -33,19 +35,16 @@ export default {
   },
   created() {
     console.log('CEATED blog: ', config)
-    // Vue.use(VuejsDialog)
     if (this.user) {
       request.get('/viewblog/' + this.user)
         .then(json => {
           this.$store.commit('setEntries', json)
-          // this.entries = json
         })
     } else {
       request.get('/entries')
         .then(json => {
           if (json.length) {
             this.$store.commit('setEntries', json)
-            // this.entries = json
           }
         })
         .catch(err => {
@@ -58,9 +57,6 @@ export default {
     const vm = this
     return {
       user: this.$route.params.user,
-      uploaded: function (x) {
-        console.log('X', x);
-      },
       sending(files, xhr, formData) {
         function callback(e) {
           const jsonId = JSON.parse(e);
@@ -82,10 +78,7 @@ export default {
   },
   methods: {
     delEntry: function (id) {
-      this.$dialog.confirm('Wirklich löschen?', {
-        okText: 'Löschen',
-        cancelText: 'Abbrechen'
-      })
+      openDialog(ConfirmDialog, { text: 'Wirklich löschen?'})
         .then(() => {
           request.delete('/entry/' + id)
             .then(() => {
@@ -130,19 +123,6 @@ export default {
 }
 </script>
 <style>
-/* dialog: */
-.dg-btn--ok {
-  border-color: red;
-  color: red;
-}
-
-.dg-btn--cancel {
-  background-color: gray;
-}
-
-.dg-content-cont {
-  font-family: sans-serif;
-}
 
 #picupload {
   width: 90%;
@@ -166,11 +146,11 @@ textarea {
   margin: auto;
 }
 
-.dropzone .dz-message {
+.dropzone .dropzone__message {
   margin: 0.5em 0;
 }
 
-.vue-dropzone {
+.dropzone {
   border-radius: 0.5em;
   border: 3px dashed gray;
   min-height: 50px;

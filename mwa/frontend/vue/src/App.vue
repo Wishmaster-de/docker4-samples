@@ -13,12 +13,14 @@
     <main>
       <router-view></router-view>
     </main>
+    <DialogWrapper />
   </div>
 </template>
 
 <script>
 import Logout from './components/Logout.vue'
 import request from './util/request'
+import { DialogWrapper } from 'vue3-promise-dialog';
 export default {
   name: 'app',
   created() {
@@ -33,7 +35,7 @@ export default {
     loggedIn() { return this.$store.state.loggedIn },
     user() { return this.$store.state.user }
   },
-  components: { Logout }
+  components: { Logout, DialogWrapper }
 }
 </script>
 

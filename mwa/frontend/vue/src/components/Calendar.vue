@@ -2,8 +2,11 @@
   <div class="cal">
     <calendar-view class="theme-default holiday-de-traditional holiday-de-official" :startingDayOfWeek="1" :items="events"
       :locale="'de'" v-on:click-event="eventClicked" v-on:show-date-change="dateChanged" :show-date="showDate">
-      <calendar-view-header slot="header" slot-scope="t" :header-props="t.headerProps"
-        @input="dateChanged"></calendar-view-header>
+        <template #header="{ headerProps }">
+				<calendar-view-header
+					:header-props="headerProps"
+					@input="dateChanged" />
+			</template>
     </calendar-view>
   </div>
 </template>

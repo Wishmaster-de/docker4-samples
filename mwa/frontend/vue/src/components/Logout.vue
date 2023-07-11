@@ -24,6 +24,7 @@ export default {
 a {
   color: white;
   text-decoration: none;
+  margin-right: 1rem;
 }
 .router-link-active {
   display: none;
