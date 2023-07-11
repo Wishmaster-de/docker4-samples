@@ -3,7 +3,7 @@
     <lightbox v-bind:src="lightboxPic" v-bind:title="lightboxPicTitle" v-on:hide-lightbox="lightboxActive = false"
       v-bind:active="lightboxActive"></lightbox>
     <div class="blogBody">
-      <DropZone id="dzone" url="http://localhost:8080/api/entry" 
+      <DropZone id="dzone" :url="`${config?.service?.baseUrl}/entry`" 
         @sending="sending" :maxFileSize="600000000" />
       <calendar v-bind:entries="entries"></calendar>
       <div v-if="entries.length > 0">
@@ -29,7 +29,7 @@ import { openDialog } from 'vue3-promise-dialog';
 
 
 export default {
-  name: 'blog',
+  name: "DiaryBlog",
   setup() {
     console.log("setup ...")
   },
@@ -56,8 +56,9 @@ export default {
   data() {
     const vm = this
     return {
+      config: config,
       user: this.$route.params.user,
-      sending(files, xhr, formData) {
+      sending(files, xhr) {
         function callback(e) {
           const jsonId = JSON.parse(e);
           if (jsonId._id) {

@@ -1,6 +1,6 @@
 
 export default {
   service: {
-    baseUrl: '/api'
+    baseUrl: 'http://localhost:8080/api',
   }
 }
