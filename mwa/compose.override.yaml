@@ -1,6 +1,6 @@
 services:
   api:
-    image: docbuc/mwaapi-dev:latest
+    image: docbuc/mwa-api-dev:latest
     build:
       context: api/
       target: dev
@@ -12,11 +12,11 @@ services:
     build:
       context: frontend
       target: builder
-    image: docbuc/mwafe-build:latest
+    image: docbuc/mwa-fe-build:latest
     environment:
       - HEALTH_URL=http://localhost/
-      - API_BASE=/api
+      - API_BASE=http://localhost:8080/api
     volumes:
-      - ./frontend/vue:/src/vue
+      - ./frontend/vue-project:/src/vue
     ports:
       - 8080:5173
