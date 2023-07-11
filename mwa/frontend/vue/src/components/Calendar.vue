@@ -1,7 +1,7 @@
 <template>
   <div class="cal">
     <calendar-view class="theme-default holiday-de-traditional holiday-de-official" :startingDayOfWeek="1" :items="events"
-      :locale="'de'" v-on:click-event="eventClicked" v-on:show-date-change="dateChanged" :show-date="showDate">
+      :locale="'de'" v-on:click-item="eventClicked" v-on:show-date-change="dateChanged" :show-date="showDate">
         <template #header="{ headerProps }">
 				<calendar-view-header
 					:header-props="headerProps"
@@ -48,7 +48,7 @@ export default {
   methods: {
     eventClicked(e) {
       console.log('EVENT clicked ', e)
-      window.location.hash = '#' + e.id
+      window.location.hash = '#_' + e.id
     },
     dateChanged(d) {
       console.log('Date event ', d)

@@ -2,11 +2,11 @@
 FROM node:20 as builder
 # RUN npm i -g --save @vue/cli
 WORKDIR /src/vue
-COPY vue/package* /src/vue/
+COPY vue-project/package* /src/vue/
 RUN chown -R node:node /src
 USER node
 RUN npm install
-COPY vue/ /src/vue/
+COPY vue-project/ /src/vue/
 RUN npm run-script build
 COPY dev-entrypoint.sh /src/
 ENTRYPOINT [ "/src/dev-entrypoint.sh" ]
