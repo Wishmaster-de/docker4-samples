@@ -17,7 +17,7 @@ services:
   api:
     restart: always
     build: api
-    image: docbuc/mwaapi:2
+    image: docbuc/mwa-api
     environment:
       - MONGO_URL=mongodb://mongo1:27017,mongo2:27017,mongo3:27017/?replicaSet=rs0
       # - MONGO_URL=mongodb://mongo1:27017/
@@ -30,7 +30,7 @@ services:
   frontend:
     restart: always
     build: frontend
-    image: docbuc/mwafe:2
+    image: docbuc/mwa-fe
     depends_on:
       - api
     ports:

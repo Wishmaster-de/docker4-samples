@@ -1,4 +1,4 @@
-# Datei: mwa/api/Dockerfile (docbuc/mwaapi:2)
+# Datei: mwa/api/Dockerfile (docbuc/mwa-api)
 FROM node:20 as dev
 WORKDIR /src
 RUN chown node:node /src
