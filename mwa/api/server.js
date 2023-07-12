@@ -30,11 +30,11 @@ app.use(session({
   secret: secretsalt,
   resave: false
 }));
-app.use('/', routes);
 app.get("/health", (req, res) => {
   debug("health-check von ", req.ip);
   res.json({ healthy: true });
 });
+app.use('/', routes);
 connect()
 app.listen(port, () => {
   console.log("API-Server auf Port ", port);
