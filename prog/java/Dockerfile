@@ -1,4 +1,4 @@
-FROM eclipse-temurin:11
+FROM eclipse-temurin:20
 RUN useradd -r java
 WORKDIR /src
 RUN chown java /src
