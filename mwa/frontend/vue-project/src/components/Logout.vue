@@ -10,12 +10,11 @@ export default {
   name: 'logout',
   methods: {
     logout: function () {
-      request.post('/logout')
-        .then(json => {
-          console.log('response: ', json)
-          this.$store.commit('logout')
-          this.$router.push('/')
-        })
+      request.post('/logout').then((json) => {
+        console.log('response: ', json)
+        this.$store.commit('logout')
+        this.$router.push('/')
+      })
     }
   }
 }

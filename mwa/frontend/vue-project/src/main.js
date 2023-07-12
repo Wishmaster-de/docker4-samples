@@ -6,12 +6,11 @@ import { createApp } from 'vue'
 
 // Vue.filter('dateFormat', DateFilter)
 
-
 const app = createApp(App)
 app.use(store)
 app.use(router)
 app.config.globalProperties.$filters = {
-    dateFormat: DateFilter
+  dateFormat: DateFilter
 }
 
-app.mount("#app")
+app.mount('#app')

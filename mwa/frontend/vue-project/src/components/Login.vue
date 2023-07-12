@@ -5,13 +5,14 @@
       <input v-model="user" id="user" />
       <label for="password">Passwort</label>
       <input type="password" v-model="password" id="password" />
-      <input type="submit" value="Anmelden" id="signin">
+      <input type="submit" value="Anmelden" id="signin" />
     </form>
     <div v-if="error">Benutzername oder Passwort falsch!</div>
   </div>
   <div v-else>
     <h2>Hi {{ username }}</h2>
-    <p>Geh zu
+    <p>
+      Geh zu
       <router-link to="/blog">deinen Tagebucheinträgen</router-link>
     </p>
   </div>
@@ -20,7 +21,7 @@
 import request from '../util/request'
 export default {
   name: 'login',
-  data () {
+  data() {
     return {
       user: '',
       password: '',
@@ -28,25 +29,26 @@ export default {
     }
   },
   computed: {
-    username () {
+    username() {
       return this.$store.state.user
     },
-    loggedIn () {
+    loggedIn() {
       return this.$store.state.loggedIn
     }
   },
   methods: {
     login: function () {
-      request.post('/login', {
-        user: this.user,
-        password: this.password
-      })
+      request
+        .post('/login', {
+          user: this.user,
+          password: this.password
+        })
         .then(() => {
           this.$router.push('blog')
           this.$store.commit('login', this.user)
           this.$emit('login', this.user)
         })
-        .catch(err => {
+        .catch((err) => {
           console.log('login failed: ', err)
           this.error = true
         })

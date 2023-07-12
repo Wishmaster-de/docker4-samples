@@ -1,12 +1,17 @@
 <template>
   <div class="cal">
-    <calendar-view class="theme-default holiday-de-traditional holiday-de-official" :startingDayOfWeek="1" :items="events"
-      :locale="'de'" v-on:click-item="eventClicked" v-on:show-date-change="dateChanged" :show-date="showDate">
-        <template #header="{ headerProps }">
-				<calendar-view-header
-					:header-props="headerProps"
-					@input="dateChanged" />
-			</template>
+    <calendar-view
+      class="theme-default holiday-de-traditional holiday-de-official"
+      :startingDayOfWeek="1"
+      :items="events"
+      :locale="'de'"
+      v-on:click-item="eventClicked"
+      v-on:show-date-change="dateChanged"
+      :show-date="showDate"
+    >
+      <template #header="{ headerProps }">
+        <calendar-view-header :header-props="headerProps" @input="dateChanged" />
+      </template>
     </calendar-view>
   </div>
 </template>
@@ -14,9 +19,9 @@
 import { CalendarView, CalendarViewHeader } from 'vue-simple-calendar'
 
 import request from '../util/request'
-import "../../node_modules/vue-simple-calendar/dist/style.css"
-import "vue-simple-calendar/dist/css/default.css"
-import "vue-simple-calendar/dist/css/holidays-us.css"
+import '../../node_modules/vue-simple-calendar/dist/style.css'
+import 'vue-simple-calendar/dist/css/default.css'
+import 'vue-simple-calendar/dist/css/holidays-us.css'
 export default {
   name: 'calendar',
   props: ['entries'],
@@ -29,7 +34,7 @@ export default {
   },
   computed: {
     events() {
-      return this.entries.map(val => {
+      return this.entries.map((val) => {
         return {
           startDate: val.date,
           title: val.title,
@@ -53,8 +58,14 @@ export default {
     dateChanged(d) {
       console.log('Date event ', d)
       this.showDate = d
-      request.get('/entries/' + d.getFullYear() + '-' + (d.getMonth() + 1).toLocaleString('de', { minimumIntegerDigits: 2 }))
-        .then(json => {
+      request
+        .get(
+          '/entries/' +
+            d.getFullYear() +
+            '-' +
+            (d.getMonth() + 1).toLocaleString('de', { minimumIntegerDigits: 2 })
+        )
+        .then((json) => {
           if (json.length) {
             this.$store.commit('setEntries', json)
             // this.entries = json
@@ -85,8 +96,8 @@ export default {
   background-position: center;
 }
 
-.theme-default>a,
-.theme-default>a:visited {
+.theme-default > a,
+.theme-default > a:visited {
   color: black;
   background: white;
   text-decoration: none;

@@ -1,7 +1,7 @@
 <template>
   <div>
     <datetime type="datetime" v-model="blogdate"></datetime>
-    <input autofocus v-model="blogtitle">
+    <input autofocus v-model="blogtitle" />
     <div v-if="preview">
       <div v-html="compiledMarkdown"></div>
     </div>
@@ -14,13 +14,13 @@
   </div>
 </template>
 <script>
-import VueDatePicker from '@vuepic/vue-datepicker';
+import VueDatePicker from '@vuepic/vue-datepicker'
 import '@vuepic/vue-datepicker/dist/main.css'
 import request from '../util/request'
-import { marked } from 'marked';
+import { marked } from 'marked'
 export default {
   name: 'blog-edit-entry',
-  props: [ '_id', 'title', 'note', 'date' ],
+  props: ['_id', 'title', 'note', 'date'],
   methods: {
     togglePreview: function () {
       this.preview = !this.preview
@@ -29,11 +29,12 @@ export default {
       this.$emit('cancel-entry')
     },
     updateEntry: function () {
-      request.patch('/entry/' + this._id, {
-        date: this.blogdate,
-        title: this.blogtitle,
-        note: this.blognote
-      })
+      request
+        .patch('/entry/' + this._id, {
+          date: this.blogdate,
+          title: this.blogtitle,
+          note: this.blognote
+        })
         .then(() => {
           this.$emit('update-done')
           this.$store.commit('updateEntry', {
@@ -45,7 +46,7 @@ export default {
         })
     }
   },
-  data () {
+  data() {
     return {
       blognote: this.note || '',
       blogdate: this.date,
@@ -67,13 +68,14 @@ export default {
 }
 </script>
 <style>
-input, textarea {
+input,
+textarea {
   font-weight: 400;
   font-size: 26px;
   font-family: 'Ubuntu', Helvetica, Arial, sans-serif;
   color: black;
   border: none;
-  box-shadow: 0px 0px 5px 1px rgba(0,0,0,0.1);
+  box-shadow: 0px 0px 5px 1px rgba(0, 0, 0, 0.1);
   padding: 0 1em;
 }
 textarea {

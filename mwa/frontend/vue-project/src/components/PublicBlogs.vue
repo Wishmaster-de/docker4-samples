@@ -5,10 +5,7 @@
       <ul>
         <li v-for="blog in blogs" v-bind:key="blog.id">
           <div>{{ blog.user }}</div>
-          <blog-entry
-            v-bind:key="blog._id"
-            v-bind="blog"
-          ></blog-entry>
+          <blog-entry v-bind:key="blog._id" v-bind="blog"></blog-entry>
         </li>
       </ul>
     </div>
@@ -23,15 +20,14 @@ import BlogEntry from '@/components/BlogEntry.vue'
 import request from '../util/request'
 export default {
   name: 'public-blogs',
-  created () {
-    request.get('/openblogs')
-      .then(json => {
-        this.blogs = json
-      })
+  created() {
+    request.get('/openblogs').then((json) => {
+      this.blogs = json
+    })
   },
-  data () {
+  data() {
     return {
-      blogs: [ ]
+      blogs: []
     }
   },
   components: {

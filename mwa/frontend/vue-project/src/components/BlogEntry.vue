@@ -18,8 +18,14 @@
       </div>
       <div class="note">
         <div v-if="edit">
-          <blog-edit-entry v-bind:_id="_id" v-bind:note="note" v-bind:date="date" v-bind:title="title"
-            v-on:cancel-entry="edit = false" v-on:update-done="edit = false"></blog-edit-entry>
+          <blog-edit-entry
+            v-bind:_id="_id"
+            v-bind:note="note"
+            v-bind:date="date"
+            v-bind:title="title"
+            v-on:cancel-entry="edit = false"
+            v-on:update-done="edit = false"
+          ></blog-edit-entry>
         </div>
         <div v-else>
           <h3>{{ title }}</h3>
@@ -38,15 +44,16 @@ export default {
   props: ['date', 'title', 'pic', 'mime', 'note', '_id', 'thumbnail', 'startedit', 'publicEntry'],
   methods: {
     togglePublic: function () {
-      request.patch('/entry/' + this._id, {
-        publicEntry: !this.isPublic,
-      })
-        .then(json => {
+      request
+        .patch('/entry/' + this._id, {
+          publicEntry: !this.isPublic
+        })
+        .then((json) => {
           console.log('json: ', json)
           if (json.success === false) {
             console.log('cannot modify')
           } else {
-            this.isPublic = !this.isPublic;
+            this.isPublic = !this.isPublic
           }
         })
     }
@@ -99,11 +106,11 @@ export default {
   background-color: green;
 }
 
-.entryHeader>.title {
+.entryHeader > .title {
   font-weight: bold;
 }
 
-.entryHeader>.editElements span {
+.entryHeader > .editElements span {
   cursor: pointer;
   margin: 0 0.3em;
 }

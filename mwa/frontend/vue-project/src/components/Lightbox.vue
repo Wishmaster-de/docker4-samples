@@ -2,7 +2,9 @@
   <div class="lightbox" @click="$emit('hide-lightbox')" v-bind:class="{ active: active }">
     <img v-bind:src="src" :alt="title" />
     <a class="close" href="#" @click="$emit('hide-lightbox')"> ✗ </a>
-    <div class='title'> <span>{{ title }}</span> </div>
+    <div class="title">
+      <span>{{ title }}</span>
+    </div>
   </div>
 </template>
 <script>
@@ -25,7 +27,7 @@ export default {
   overflow: hidden;
 }
 
-.lightbox>img {
+.lightbox > img {
   margin: auto;
   position: absolute;
   top: 0;
@@ -40,7 +42,7 @@ export default {
   transition: 0.5s ease-in-out;
 }
 
-.lightbox>.title {
+.lightbox > .title {
   position: absolute;
   top: -80px;
   opacity: 0.7;
@@ -54,7 +56,7 @@ export default {
   right: 0;
 }
 
-.lightbox>.title>span {
+.lightbox > .title > span {
   border-radius: 0.5em;
   display: inline-block;
   font-style: italic;
@@ -62,7 +64,7 @@ export default {
   padding: 1.1em 1em;
 }
 
-.lightbox>.close {
+.lightbox > .close {
   display: block;
   width: 50px;
   height: 50px;
@@ -82,17 +84,14 @@ export default {
   opacity: 1;
   top: 0;
   bottom: 0;
-
 }
-.lightbox.active >  img {
-    max-height: 100%;
-    max-width: 100%;
-  }
+.lightbox.active > img {
+  max-height: 100%;
+  max-width: 100%;
+}
 
-.lightbox.active >  .close,
-.lightbox.active >  .title {
-    top: 0px;
-  }
-
-
+.lightbox.active > .close,
+.lightbox.active > .title {
+  top: 0px;
+}
 </style>

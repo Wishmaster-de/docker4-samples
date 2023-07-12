@@ -8,10 +8,10 @@
 import PublicBlogs from '@/components/PublicBlogs.vue'
 export default {
   name: 'home',
-  created () {
+  created() {
     console.log('home created, are we logged in?', this.$parent.user)
   },
-  data () {
+  data() {
     const vm = this
     return {
       user: vm.$root.user
@@ -25,7 +25,8 @@ export default {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style>
-h1, h2 {
+h1,
+h2 {
   font-weight: normal;
 }
 
@@ -40,6 +41,6 @@ li {
 }
 
 a {
-  color: #35495E;
+  color: #35495e;
 }
 </style>

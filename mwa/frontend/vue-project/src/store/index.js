@@ -31,7 +31,7 @@ const store = createStore({
       state.entries.unshift(entry)
     },
     delEntry: (state, id) => {
-      state.entries = state.entries.filter(val => {
+      state.entries = state.entries.filter((val) => {
         return val._id !== id
       })
     },
