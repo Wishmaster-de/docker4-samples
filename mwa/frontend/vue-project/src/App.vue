@@ -36,9 +36,9 @@ export default {
     },
     user() {
       return this.$store.state.user
-    }
+    },
   },
-  components: { Logout, DialogWrapper }
+  components: { Logout, DialogWrapper },
 }
 </script>
 

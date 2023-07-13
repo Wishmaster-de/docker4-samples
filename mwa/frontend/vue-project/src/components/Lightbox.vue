@@ -10,7 +10,7 @@
 <script>
 export default {
   name: 'lightbox',
-  props: ['src', 'title', 'active']
+  props: ['src', 'title', 'active'],
 }
 </script>
 

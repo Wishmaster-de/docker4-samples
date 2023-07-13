@@ -46,7 +46,7 @@ export default {
     togglePublic: function () {
       request
         .patch('/entry/' + this._id, {
-          publicEntry: !this.isPublic
+          publicEntry: !this.isPublic,
         })
         .then((json) => {
           console.log('json: ', json)
@@ -56,13 +56,13 @@ export default {
             this.isPublic = !this.isPublic
           }
         })
-    }
+    },
   },
   computed: {
     img: function () {
       return {
         thumbnail: 'data:' + this.mime + ';base64,' + this.thumbnail,
-        title: this.title
+        title: this.title,
       }
     },
     compiledNote: function () {
@@ -71,7 +71,7 @@ export default {
     },
     user() {
       return this.$store.state.user
-    }
+    },
   },
   data() {
     return {
@@ -82,13 +82,13 @@ export default {
         note: this.note || '',
         publicEntry: this.publicEntry || false,
         title: this.title,
-        date: this.date
-      }
+        date: this.date,
+      },
     }
   },
   components: {
-    BlogEditEntry
-  }
+    BlogEditEntry,
+  },
 }
 </script>
 <style scoped>

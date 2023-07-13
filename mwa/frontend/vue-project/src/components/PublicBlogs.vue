@@ -27,12 +27,12 @@ export default {
   },
   data() {
     return {
-      blogs: []
+      blogs: [],
     }
   },
   components: {
-    BlogEntry
-  }
+    BlogEntry,
+  },
 }
 </script>
 <style scoped>

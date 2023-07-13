@@ -15,8 +15,8 @@ export default {
         this.$store.commit('logout')
         this.$router.push('/')
       })
-    }
-  }
+    },
+  },
 }
 </script>
 <style scoped>

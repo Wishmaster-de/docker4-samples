@@ -17,14 +17,14 @@ export default {
   get(url) {
     const options = {
       method: 'GET',
-      credentials: 'include'
+      credentials: 'include',
     }
     return fetch(config.service.apiBaseUrl + url, options).then(handleAuth)
   },
   delete(url) {
     const options = {
       method: 'DELETE',
-      credentials: 'include'
+      credentials: 'include',
     }
     return fetch(config.service.apiBaseUrl + url, options).then(handleAuth)
   },
@@ -32,10 +32,10 @@ export default {
     const options = {
       method: 'POST',
       headers: {
-        'content-type': 'application/json'
+        'content-type': 'application/json',
       },
       credentials: 'include',
-      body: JSON.stringify(body)
+      body: JSON.stringify(body),
     }
     return fetch(config.service.apiBaseUrl + url, options).then(handleAuth)
   },
@@ -43,10 +43,10 @@ export default {
     const options = {
       method: 'PUT',
       headers: {
-        'content-type': 'application/json'
+        'content-type': 'application/json',
       },
       credentials: 'include',
-      body: JSON.stringify(body)
+      body: JSON.stringify(body),
     }
     return fetch(config.service.apiBaseUrl + url, options).then(handleAuth)
   },
@@ -54,11 +54,11 @@ export default {
     const options = {
       method: 'PATCH',
       headers: {
-        'content-type': 'application/json'
+        'content-type': 'application/json',
       },
       credentials: 'include',
-      body: JSON.stringify(body)
+      body: JSON.stringify(body),
     }
     return fetch(config.service.apiBaseUrl + url, options).then(handleAuth)
-  }
+  },
 }

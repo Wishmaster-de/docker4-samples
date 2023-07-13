@@ -8,7 +8,7 @@ const store = createStore({
   state: {
     loggedIn: false,
     user: '',
-    entries: []
+    entries: [],
   },
   // state () {
   //   return {
@@ -47,8 +47,8 @@ const store = createStore({
         }
         return obj
       })
-    }
-  }
+    },
+  },
 })
 
 export default store

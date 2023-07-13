@@ -33,7 +33,7 @@ export default {
         .patch('/entry/' + this._id, {
           date: this.blogdate,
           title: this.blogtitle,
-          note: this.blognote
+          note: this.blognote,
         })
         .then(() => {
           this.$emit('update-done')
@@ -41,17 +41,17 @@ export default {
             title: this.blogtitle,
             note: this.blognote,
             date: this.blogdate,
-            _id: this._id
+            _id: this._id,
           })
         })
-    }
+    },
   },
   data() {
     return {
       blognote: this.note || '',
       blogdate: this.date,
       blogtitle: this.title,
-      preview: false
+      preview: false,
     }
   },
   computed: {
@@ -60,11 +60,11 @@ export default {
         return ''
       }
       return marked(this.blognote)
-    }
+    },
   },
   components: {
-    datetime: VueDatePicker
-  }
+    datetime: VueDatePicker,
+  },
 }
 </script>
 <style>

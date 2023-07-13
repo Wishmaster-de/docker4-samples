@@ -14,7 +14,7 @@ import { closeDialog } from 'vue3-promise-dialog'
 
 export default defineComponent({
   props: {
-    text: String
+    text: String,
   },
   setup() {
     function returnValue() {
@@ -22,9 +22,9 @@ export default defineComponent({
     }
     return {
       returnValue,
-      closeDialog
+      closeDialog,
     }
-  }
+  },
 })
 </script>
 

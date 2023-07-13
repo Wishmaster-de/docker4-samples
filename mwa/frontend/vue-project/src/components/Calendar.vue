@@ -30,7 +30,7 @@ export default {
       if (this.entries && this.entries.length) {
         this.showDate = new Date(this.entries[0].date)
       }
-    }
+    },
   },
   computed: {
     events() {
@@ -40,14 +40,14 @@ export default {
           title: val.title,
           thumbnail: 'url(data:' + val.mime + ';base64,' + val.thumbnail + ')',
           id: val._id,
-          url: '#_' + val._id
+          url: '#_' + val._id,
         }
       })
-    }
+    },
   },
   data() {
     return {
-      showDate: new Date()
+      showDate: new Date(),
     }
   },
   methods: {
@@ -71,12 +71,12 @@ export default {
             // this.entries = json
           }
         })
-    }
+    },
   },
   components: {
     CalendarView,
-    CalendarViewHeader
-  }
+    CalendarViewHeader,
+  },
 }
 </script>
 <style>

@@ -14,12 +14,12 @@ export default {
   data() {
     const vm = this
     return {
-      user: vm.$root.user
+      user: vm.$root.user,
     }
   },
   components: {
-    PublicBlogs
-  }
+    PublicBlogs,
+  },
 }
 </script>
 

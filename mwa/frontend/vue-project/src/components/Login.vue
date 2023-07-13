@@ -25,7 +25,7 @@ export default {
     return {
       user: '',
       password: '',
-      error: false
+      error: false,
     }
   },
   computed: {
@@ -34,14 +34,14 @@ export default {
     },
     loggedIn() {
       return this.$store.state.loggedIn
-    }
+    },
   },
   methods: {
     login: function () {
       request
         .post('/login', {
           user: this.user,
-          password: this.password
+          password: this.password,
         })
         .then(() => {
           this.$router.push('blog')
@@ -52,8 +52,8 @@ export default {
           console.log('login failed: ', err)
           this.error = true
         })
-    }
-  }
+    },
+  },
 }
 </script>
 <style>

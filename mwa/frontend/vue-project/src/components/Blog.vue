@@ -83,7 +83,7 @@ export default {
       },
       lightboxPic: '',
       lightboxPicTitle: '',
-      lightboxActive: false
+      lightboxActive: false,
     }
   },
   methods: {
@@ -114,19 +114,19 @@ export default {
       this.lightboxPic = config.service.apiBaseUrl + '/viewimage/' + id
       this.lightboxPicTitle = title
       this.lightboxActive = true
-    }
+    },
   },
   computed: {
     entries() {
       return this.$store.state.entries
-    }
+    },
   },
   components: {
     Calendar,
     DropZone,
     BlogEntry,
-    Lightbox
-  }
+    Lightbox,
+  },
 }
 </script>
 <style>
