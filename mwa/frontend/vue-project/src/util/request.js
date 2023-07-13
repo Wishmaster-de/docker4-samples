@@ -19,14 +19,14 @@ export default {
       method: 'GET',
       credentials: 'include'
     }
-    return fetch(config.service.baseUrl + url, options).then(handleAuth)
+    return fetch(config.service.apiBaseUrl + url, options).then(handleAuth)
   },
   delete(url) {
     const options = {
       method: 'DELETE',
       credentials: 'include'
     }
-    return fetch(config.service.baseUrl + url, options).then(handleAuth)
+    return fetch(config.service.apiBaseUrl + url, options).then(handleAuth)
   },
   post(url, body) {
     const options = {
@@ -37,7 +37,7 @@ export default {
       credentials: 'include',
       body: JSON.stringify(body)
     }
-    return fetch(config.service.baseUrl + url, options).then(handleAuth)
+    return fetch(config.service.apiBaseUrl + url, options).then(handleAuth)
   },
   put(url, body) {
     const options = {
@@ -48,7 +48,7 @@ export default {
       credentials: 'include',
       body: JSON.stringify(body)
     }
-    return fetch(config.service.baseUrl + url, options).then(handleAuth)
+    return fetch(config.service.apiBaseUrl + url, options).then(handleAuth)
   },
   patch(url, body) {
     const options = {
@@ -59,6 +59,6 @@ export default {
       credentials: 'include',
       body: JSON.stringify(body)
     }
-    return fetch(config.service.baseUrl + url, options).then(handleAuth)
+    return fetch(config.service.apiBaseUrl + url, options).then(handleAuth)
   }
 }

@@ -9,7 +9,7 @@
     <div class="blogBody">
       <DropZone
         id="dzone"
-        :url="`${config?.service?.baseUrl}/entry`"
+        :url="`${config?.service?.apiBaseUrl}/entry`"
         @sending="sending"
         :maxFileSize="600000000"
       />
@@ -42,9 +42,6 @@ import { openDialog } from 'vue3-promise-dialog'
 
 export default {
   name: 'DiaryBlog',
-  setup() {
-    console.log('setup ...')
-  },
   created() {
     console.log('CEATED blog: ', config)
     if (this.user) {
@@ -114,7 +111,7 @@ export default {
       })
     },
     picClicked: function (id, title) {
-      this.lightboxPic = config.service.baseUrl + '/viewimage/' + id
+      this.lightboxPic = config.service.apiBaseUrl + '/viewimage/' + id
       this.lightboxPicTitle = title
       this.lightboxActive = true
     }
