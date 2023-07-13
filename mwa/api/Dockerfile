@@ -15,7 +15,7 @@ WORKDIR /src
 RUN chown node:node /src
 USER node
 COPY package.json /src/
-RUN npm i --production
+RUN npm i --omit=dev
 COPY server.js routes.js health.js /src/
 HEALTHCHECK --interval=10s --timeout=3s CMD node /src/health.js \
   || exit 1
