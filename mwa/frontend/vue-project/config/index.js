@@ -1,5 +1,5 @@
 
-const apiBaseUrl= 'http://localhost:8080/api';
+const apiBaseUrl= '/api';
 
 export default {
   service: {
