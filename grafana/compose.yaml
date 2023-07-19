@@ -4,13 +4,19 @@ services:
     build: .
     restart: unless-stopped
     ports:
-      - 3001:3000
+      - 3000:3000
     environment:
       - GF_SECURITY_ADMIN_PASSWORD=geheim
   telegraf:
     image: docbuc/telegraf
     build: telegraf/
     restart: unless-stopped
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock:ro
+    environment:
+      - INFLUXDB_TOKEN=gahPae6deivo0aenooy7thoheewaex9eeNgaePah8dee5io6neewooSe3bemu9gi
+      - INFLUXDB_ORG=dockerbuch
+      - INFLUXDB_BUCKET=dockerbuch
   influx:
     image: influxdb:2.7
     restart: unless-stopped
