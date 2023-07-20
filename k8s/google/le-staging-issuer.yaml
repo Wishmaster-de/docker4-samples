@@ -1,15 +1,14 @@
 apiVersion: cert-manager.io/v1
-kind: ClusterIssuer
+kind: Issuer
 metadata:
   name: letsencrypt-staging
 spec:
   acme:
-    email: info@docker-compendium.info
-    # server: https://acme-v02.api.letsencrypt.org/directory
+    email: info@dockerbuch.info
     server: https://acme-staging-v02.api.letsencrypt.org/directory
     privateKeySecretRef:
       name: letsencrypt-staging
     solvers:
     - http01:
         ingress:
-          class: nginx
+          name: frontend-ingress
