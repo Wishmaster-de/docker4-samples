@@ -2,7 +2,7 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   annotations:
-    kompose.cmd: kompose -f compose.yaml convert
+    kompose.cmd: kompose convert
     kompose.version: 1.30.0 (9d8dcb518)
   creationTimestamp: null
   labels:
@@ -18,7 +18,7 @@ spec:
   template:
     metadata:
       annotations:
-        kompose.cmd: kompose -f compose.yaml convert
+        kompose.cmd: kompose convert
         kompose.version: 1.30.0 (9d8dcb518)
       creationTimestamp: null
       labels:
@@ -41,6 +41,10 @@ spec:
               value: dockerbuch
           image: influxdb:2.7
           name: influx
+          ports:
+            - containerPort: 8086
+              hostPort: 8086
+              protocol: TCP
           resources: {}
       restartPolicy: Always
 status: {}

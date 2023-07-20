@@ -2,7 +2,7 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   annotations:
-    kompose.cmd: kompose -f compose.yaml convert
+    kompose.cmd: kompose convert
     kompose.version: 1.30.0 (9d8dcb518)
   creationTimestamp: null
   labels:
@@ -18,7 +18,7 @@ spec:
   template:
     metadata:
       annotations:
-        kompose.cmd: kompose -f compose.yaml convert
+        kompose.cmd: kompose convert
         kompose.version: 1.30.0 (9d8dcb518)
       creationTimestamp: null
       labels:
@@ -29,7 +29,7 @@ spec:
         - env:
             - name: GF_SECURITY_ADMIN_PASSWORD
               value: geheim
-          image: docbuc/grafana
+          image: docbuc/grafana:4
           name: grafana
           ports:
             - containerPort: 3000

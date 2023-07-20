@@ -2,7 +2,7 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   annotations:
-    kompose.cmd: kompose -f compose.yaml convert
+    kompose.cmd: kompose convert
     kompose.version: 1.30.0 (9d8dcb518)
   creationTimestamp: null
   labels:
@@ -18,7 +18,7 @@ spec:
   template:
     metadata:
       annotations:
-        kompose.cmd: kompose -f compose.yaml convert
+        kompose.cmd: kompose convert
         kompose.version: 1.30.0 (9d8dcb518)
       creationTimestamp: null
       labels:
@@ -33,7 +33,7 @@ spec:
               value: dockerbuch
             - name: INFLUXDB_TOKEN
               value: gahPae6deivo0aenooy7thoheewaex9eeNgaePah8dee5io6neewooSe3bemu9gi
-          image: docbuc/telegraf
+          image: docbuc/telegraf:4
           name: telegraf
           resources: {}
       restartPolicy: Always
