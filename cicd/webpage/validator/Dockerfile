@@ -1,17 +1,16 @@
-FROM openjdk:16-alpine
+FROM eclipse-temurin:20
 
 ENV VALIDATOR_VERSION=20.6.30
 
 WORKDIR /src
 
-RUN wget "https://github.com/validator/validator/releases/download/$VALIDATOR_VERSION/vnu.jar_$VALIDATOR_VERSION.zip" \
-  -O /src/vnu.jar.zip \
-  && unzip /src/vnu.jar.zip \
+ADD wget "https://github.com/validator/validator/releases/download/$VALIDATOR_VERSION/vnu.jar_$VALIDATOR_VERSION.zip" /src/vnu.jar.zip
+RUN unzip /src/vnu.jar.zip \
   && rm /src/vnu.jar.zip
 
 EXPOSE 8888
 RUN adduser -S validator
 USER validator
 WORKDIR /home/validator
-ENTRYPOINT ["java", "-jar", "/src/dist/vnu.jar" ]
+ENTRYPOINT ["java", "-jar", "/src/vnu.jar" ]
 CMD ["--help"]
