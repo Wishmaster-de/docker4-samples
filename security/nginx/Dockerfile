@@ -1,8 +1,8 @@
-FROM nginx:alpine
+FROM nginx:1
 
 RUN touch /var/run/nginx.pid \
   && chown -R nginx:nginx /var/run/nginx.pid \
   && chown -R nginx:nginx /var/cache/nginx
-COPY default.conf /etc/nginx/conf.d/
-EXPOSE 8080
 USER nginx
+# COPY default.conf /etc/nginx/conf.d/
+# EXPOSE 8080
