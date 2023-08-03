@@ -1,4 +1,3 @@
-version: '3.4'
 services:
   web:
     image: gitlab.dockerbuch.info/dockerbuch/dockerbuch-web:dev
