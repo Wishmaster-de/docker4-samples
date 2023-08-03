@@ -1,7 +1,7 @@
 FROM debian:buster
 
 ENV VALIDATOR_VERSION=18.11.5
-ENV HUGO_VERSION=0.59.1
+ENV HUGO_VERSION=0.115.4
 
 RUN apt-get update && apt-get -y install \
 	curl \
