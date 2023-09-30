@@ -5,7 +5,7 @@
 
 Docker book by [Bernd Öggl](https://webman.at) and [Michael Kofler](https://kofler.info), available in German and English
 
-This repository contains the sample files for the 4th German edition, to be published in autumn 2023.
+This repository contains the sample files for the 4th German edition, published in autumn 2023.
 
 ## Das Praxisbuch für Entwickler und DevOps-Teams
 
